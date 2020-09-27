@@ -30,13 +30,14 @@ Para isso vamos executar o bash no container da API e utilizar o composer e o ar
 
 ```bash
 docker exec -it api bash
-# inside the container
+# Dentro do container "api"
 composer update -vvv
 php artisan migrate --seed
 ```
 
 Após isso, nesta mesma seção, podem ser executados os testes unitários do PHPUNIT pelo comando abaixo
 ```bash
+# Dentro do container "api"
 vendor/bin/phpunit
 ```
 
