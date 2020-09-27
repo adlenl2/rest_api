@@ -13,7 +13,7 @@ Clone este repositório
 
 ```bash
 git clone https://github.com/adlenl2/rest_api
-cd dev_api
+cd rest_api
 ```
 
 Utilize o docker para buildar e subir as imagens configuradas no docker-compose.yml.
