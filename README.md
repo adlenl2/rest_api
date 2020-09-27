@@ -24,19 +24,20 @@ docker-compose up --build
 
 ## Utilização
 
-Ao instanciar os containers a partir do docker, a REST API já está pronta para receber os requests, mas primeiro é necessário criar o banco de dados. 
+Ao instanciar os containers a partir do docker, a REST API já está pronta para receber os requests, mas primeiro é necessário utilizar o composer para atualizar as dependências do lumen e criar o banco de dados. 
 
-Para isso vamos executar o bash no container da API e utilizar o migrate.
-Para executar 
+Para isso vamos executar o bash no container da API e utilizar o composer e o artisan.
+
 ```bash
 docker exec -it api bash
 # inside the container
+composer update -vvv
 php artisan migrate --seed
 ```
 
 Após isso, nesta mesma seção, podem ser executados os testes unitários do PHPUNIT pelo comando abaixo
 ```bash
-/vendor/bin/phpunit
+vendor/bin/phpunit
 ```
 
 A partir deste momento a API pode ser consumida através do endereço [http://localhost/api/](http://localhost/api/). Foram tratados os seguintes casos:
