@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Developer;
+use App\Models\Developer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -10,19 +10,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class DeveloperController extends Controller
 {
 
-    public function showAllDevelopers()
-    {
-        return response()->json(Developer::all());
-    }
-
-    public function showOneDeveloper($id)
-    {
-        try {
-            return response()->json(Developer::findOrFail($id));
-        } catch (ModelNotFoundException $e) {
-            return response(null, Response::HTTP_BAD_REQUEST);
-        }
-    }
     public function searchDevelopers(Request $request)
     {
         $developer = new Developer();
@@ -41,6 +28,15 @@ class DeveloperController extends Controller
             $httpCode = Response::HTTP_BAD_REQUEST;
         }
         return response()->json($developerList, $httpCode);
+    }
+
+    public function showOneDeveloper($id)
+    {
+        try {
+            return response()->json(Developer::findOrFail($id));
+        } catch (ModelNotFoundException $e) {
+            return response(null, Response::HTTP_BAD_REQUEST);
+        }
     }
 
     public function create(Request $request)
